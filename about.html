@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us — BiteBox</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --crimson:#8B1A2B;--crimson-light:#C4374F;
+  --navy:#0D1B2A;--navy-mid:#1A2E45;
+  --steel:#4A7FA5;--steel-light:#6BA3C7;
+  --gold:#D4A843;--gold-light:#E8C96A;
+  --cream:#F9F4EE;--text-light:#F0EBE3;--text-muted:#9BA8B4;
+  --font-d:'Playfair Display',serif;--font-b:'DM Sans',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-b);background:var(--navy);color:var(--text-light);min-height:100vh}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;background:rgba(13,27,42,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(74,127,165,.2);height:64px;display:flex;align-items:center;padding:0 1.5rem}
+.ni{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:1400px;margin:0 auto}
+.logo{font-family:var(--font-d);font-size:1.5rem;font-weight:700;color:var(--gold);letter-spacing:-.02em;text-decoration:none}
+.logo span{color:var(--crimson-light)}
+.back-btn{display:inline-flex;align-items:center;gap:.5rem;padding:.5rem 1rem;border-radius:8px;background:transparent;border:1.5px solid var(--steel);color:var(--steel-light);text-decoration:none;font-family:var(--font-b);font-size:.9rem;font-weight:500;transition:all .25s}
+.back-btn:hover{background:var(--steel);color:#fff}
+
+/* HERO */
+.hero{min-height:40vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:8rem 1.5rem 4rem;background:radial-gradient(ellipse at 30% 60%,rgba(139,26,43,.2) 0%,transparent 60%),linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 100%)}
+.hero h1{font-family:var(--font-d);font-size:clamp(2.5rem,5vw,4rem);font-weight:900;color:var(--cream);margin-bottom:1rem}
+.hero h1 span{color:var(--gold)}
+.hero p{color:var(--text-muted);font-size:1.1rem;max-width:500px;margin:0 auto}
+.gold-line{width:48px;height:3px;background:var(--gold);border-radius:2px;margin:1.5rem auto}
+
+/* CONTENT */
+.content{max-width:800px;margin:0 auto;padding:4rem 1.5rem}
+.coming-soon{text-align:center;padding:5rem 2rem;background:var(--navy-mid);border:1px solid rgba(74,127,165,.15);border-radius:20px}
+.coming-soon .icon{font-size:4rem;margin-bottom:1.5rem}
+.coming-soon h2{font-family:var(--font-d);font-size:2rem;color:var(--cream);margin-bottom:1rem}
+.coming-soon p{color:var(--text-muted);font-size:1rem;line-height:1.7;max-width:400px;margin:0 auto 2rem}
+.coming-soon a{display:inline-flex;align-items:center;gap:.5rem;padding:.875rem 1.75rem;background:var(--crimson);color:#fff;border-radius:8px;text-decoration:none;font-weight:600;font-size:.95rem;transition:all .25s}
+.coming-soon a:hover{background:var(--crimson-light);transform:translateY(-1px)}
+
+/* FOOTER */
+footer{background:var(--navy-mid);border-top:1px solid rgba(74,127,165,.15);padding:2rem 1.5rem;text-align:center;margin-top:4rem}
+.fl{font-family:var(--font-d);font-size:1.5rem;font-weight:700;color:var(--gold)}
+.fl span{color:var(--crimson-light)}
+footer p{color:var(--text-muted);font-size:.78rem;margin-top:.5rem}
+
+@media(max-width:480px){
+  .hero{padding:6rem 1rem 3rem}
+  .content{padding:2rem 1rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="ni">
+    <a href="index.html" class="logo">Bite<span>Box</span></a>
+    <a href="index.html" class="back-btn">← Back to Home</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div>
+    <h1>About <span>BiteBox</span></h1>
+    <div class="gold-line"></div>
+    <p>Our story, our mission, and the people behind every bite.</p>
+  </div>
+</div>
+
+<div class="content">
+  <div class="coming-soon">
+    <div class="icon">🍽️</div>
+    <h2>Coming Soon</h2>
+    <p>We're working on sharing our story with you. Check back soon to learn more about BiteBox and our journey!</p>
+    <a href="index.html">← Back to Menu</a>
+  </div>
+</div>
+
+<footer>
+  <div class="fl">Bite<span>Box</span></div>
+  <p>© 2025 BiteBox. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
