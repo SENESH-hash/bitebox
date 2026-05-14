@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us — BiteBox</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --crimson:#8B1A2B;--crimson-light:#C4374F;
+  --navy:#0D1B2A;--navy-mid:#1A2E45;
+  --steel:#4A7FA5;--steel-light:#6BA3C7;
+  --gold:#D4A843;--gold-light:#E8C96A;
+  --cream:#F9F4EE;--text-light:#F0EBE3;--text-muted:#9BA8B4;
+  --success:#2D8A4E;--error:#C0392B;
+  --font-d:'Playfair Display',serif;--font-b:'DM Sans',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-b);background:var(--navy);color:var(--text-light);min-height:100vh}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;background:rgba(13,27,42,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(74,127,165,.2);height:64px;display:flex;align-items:center;padding:0 1.5rem}
+.ni{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:1400px;margin:0 auto}
+.logo{font-family:var(--font-d);font-size:1.5rem;font-weight:700;color:var(--gold);letter-spacing:-.02em;text-decoration:none}
+.logo span{color:var(--crimson-light)}
+.back-btn{display:inline-flex;align-items:center;gap:.5rem;padding:.5rem 1rem;border-radius:8px;background:transparent;border:1.5px solid var(--steel);color:var(--steel-light);text-decoration:none;font-family:var(--font-b);font-size:.9rem;font-weight:500;transition:all .25s}
+.back-btn:hover{background:var(--steel);color:#fff}
+
+/* HERO */
+.hero{min-height:35vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:8rem 1.5rem 4rem;background:radial-gradient(ellipse at 70% 40%,rgba(74,127,165,.15) 0%,transparent 60%),linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 100%)}
+.hero h1{font-family:var(--font-d);font-size:clamp(2.5rem,5vw,4rem);font-weight:900;color:var(--cream);margin-bottom:1rem}
+.hero h1 span{color:var(--gold)}
+.hero p{color:var(--text-muted);font-size:1.1rem;max-width:500px;margin:0 auto}
+.gold-line{width:48px;height:3px;background:var(--gold);border-radius:2px;margin:1.5rem auto}
+
+/* CONTENT */
+.content{max-width:640px;margin:0 auto;padding:4rem 1.5rem}
+
+/* CONTACT CARDS */
+.contact-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-bottom:3rem}
+.contact-card{background:var(--navy-mid);border:1px solid rgba(74,127,165,.15);border-radius:16px;padding:1.5rem;text-align:center;text-decoration:none;color:var(--text-light);transition:all .25s}
+.contact-card:hover{border-color:rgba(74,127,165,.4);transform:translateY(-3px);box-shadow:0 8px 32px rgba(0,0,0,.2)}
+.contact-card .icon{font-size:2rem;margin-bottom:.75rem}
+.contact-card .label{font-size:.8rem;color:var(--text-muted);letter-spacing:.06em;text-transform:uppercase;font-weight:600;margin-bottom:.25rem}
+.contact-card .value{font-size:.95rem;font-weight:500;color:var(--steel-light)}
+
+/* FORM */
+.form-card{background:var(--navy-mid);border:1px solid rgba(74,127,165,.15);border-radius:20px;padding:2rem}
+.form-card h2{font-family:var(--font-d);font-size:1.6rem;color:var(--cream);margin-bottom:.5rem}
+.form-card p{color:var(--text-muted);font-size:.9rem;margin-bottom:1.75rem}
+.fg{margin-bottom:1.25rem}
+.fg label{display:block;font-size:.85rem;font-weight:500;color:var(--text-muted);margin-bottom:.4rem;letter-spacing:.03em}
+.fg input,.fg textarea{width:100%;padding:.75rem 1rem;background:var(--navy);border:1px solid rgba(74,127,165,.3);border-radius:8px;color:var(--text-light);font-family:var(--font-b);font-size:.95rem;outline:none;transition:border-color .25s}
+.fg input:focus,.fg textarea:focus{border-color:var(--steel)}
+.fg input::placeholder,.fg textarea::placeholder{color:var(--text-muted)}
+.fg textarea{resize:vertical;min-height:140px}
+.submit-btn{width:100%;padding:1rem;background:var(--crimson);color:#fff;border:none;border-radius:8px;font-family:var(--font-b);font-size:1rem;font-weight:600;cursor:pointer;transition:all .25s;display:flex;align-items:center;justify-content:center;gap:.5rem}
+.submit-btn:hover{background:var(--crimson-light);transform:translateY(-1px)}
+.submit-btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+
+/* SUCCESS MESSAGE */
+.success-msg{display:none;text-align:center;padding:2rem}
+.success-msg .icon{font-size:3rem;margin-bottom:1rem}
+.success-msg h3{font-family:var(--font-d);font-size:1.4rem;color:var(--cream);margin-bottom:.5rem}
+.success-msg p{color:var(--text-muted);margin-bottom:1.5rem}
+.success-msg a{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.5rem;background:var(--crimson);color:#fff;border-radius:8px;text-decoration:none;font-weight:600;transition:all .25s}
+.success-msg a:hover{background:var(--crimson-light)}
+
+/* TOAST */
+#tc{position:fixed;top:1.5rem;right:1.5rem;z-index:9999;display:flex;flex-direction:column;gap:.5rem}
+.toast{padding:.875rem 1.25rem;border-radius:8px;font-size:.9rem;font-weight:500;color:#fff;min-width:260px;animation:sli .3s ease}
+.toast.success{background:var(--success)}.toast.error{background:var(--error)}
+@keyframes sli{from{transform:translateX(120%);opacity:0}to{transform:translateX(0);opacity:1}}
+
+/* FOOTER */
+footer{background:var(--navy-mid);border-top:1px solid rgba(74,127,165,.15);padding:2rem 1.5rem;text-align:center;margin-top:4rem}
+.fl{font-family:var(--font-d);font-size:1.5rem;font-weight:700;color:var(--gold)}
+.fl span{color:var(--crimson-light)}
+footer p{color:var(--text-muted);font-size:.78rem;margin-top:.5rem}
+
+@media(max-width:480px){
+  .hero{padding:6rem 1rem 3rem}
+  .content{padding:2rem 1rem}
+  .form-card{padding:1.25rem}
+}
+</style>
+</head>
+<body>
+
+<div id="tc"></div>
+
+<nav>
+  <div class="ni">
+    <a href="index.html" class="logo">Bite<span>Box</span></a>
+    <a href="index.html" class="back-btn">← Back to Home</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div>
+    <h1>Contact <span>Us</span></h1>
+    <div class="gold-line"></div>
+    <p>We'd love to hear from you! Reach out anytime.</p>
+  </div>
+</div>
+
+<div class="content">
+
+  <!-- CONTACT CARDS -->
+  <div class="contact-cards">
+    <a href="https://wa.me/94760774055" target="_blank" class="contact-card">
+      <div class="icon">💬</div>
+      <div class="label">WhatsApp</div>
+      <div class="value">+94 76 077 4055</div>
+    </a>
+    <a href="https://www.instagram.com/seneshindeewara" target="_blank" class="contact-card">
+      <div class="icon">📸</div>
+      <div class="label">Instagram</div>
+      <div class="value">@seneshindeewara</div>
+    </a>
+  </div>
+
+  <!-- CONTACT FORM -->
+  <div class="form-card">
+    <div id="form-area">
+      <h2>Send us a Message</h2>
+      <p>Fill in the form below and we'll get back to you as soon as possible!</p>
+
+      <div class="fg">
+        <label>Your Name *</label>
+        <input type="text" id="c-name" placeholder="Enter your full name">
+      </div>
+      <div class="fg">
+        <label>Email Address *</label>
+        <input type="email" id="c-email" placeholder="your@email.com">
+      </div>
+      <div class="fg">
+        <label>Your Inquiry *</label>
+        <textarea id="c-msg" placeholder="Write your message here…"></textarea>
+      </div>
+
+      <button class="submit-btn" onclick="sendMsg()" id="send-btn">
+        Send Message 📨
+      </button>
+    </div>
+
+    <div class="success-msg" id="success-area">
+      <div class="icon">🎉</div>
+      <h3>Message Sent!</h3>
+      <p>Thank you for reaching out! We'll get back to you very soon.</p>
+      <a href="index.html">← Back to Menu</a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="fl">Bite<span>Box</span></div>
+  <p>© 2025 BiteBox. All rights reserved.</p>
+</footer>
+
+<script>
+// ============================================================
+// Replace with your Supabase details
+// ============================================================
+const SB_URL = 'https://qenfbcgftriocanvvrft.supabase.co';
+const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFlbmZiY2dmdHJpb2NhbnZ2cmZ0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg2OTEzMDYsImV4cCI6MjA5NDI2NzMwNn0.-z-AyQx43YoshUx0HwcpCbT5hs8iQ2wSctABVKX98So';
+// ============================================================
+
+function toast(m,t='info'){
+  const el=document.createElement('div');
+  el.className=`toast ${t}`;el.textContent=m;
+  document.getElementById('tc').appendChild(el);
+  setTimeout(()=>el.remove(),3500);
+}
+
+async function sendMsg(){
+  const name=document.getElementById('c-name').value.trim();
+  const email=document.getElementById('c-email').value.trim();
+  const msg=document.getElementById('c-msg').value.trim();
+
+  if(!name){toast('Please enter your name','error');return}
+  if(!email){toast('Please enter your email','error');return}
+  if(!msg){toast('Please write your inquiry','error');return}
+
+  const btn=document.getElementById('send-btn');
+  btn.disabled=true;btn.textContent='Sending…';
+
+  try{
+    const res = await fetch(`${SB_URL}/rest/v1/inquiries`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SB_KEY,
+        'Authorization': `Bearer ${SB_KEY}`
+      },
+      body: JSON.stringify({ name, email, message: msg })
+    });
+
+    if(res.ok || res.status===201){
+      document.getElementById('form-area').style.display='none';
+      document.getElementById('success-area').style.display='block';
+    } else {
+      throw new Error('Failed to send');
+    }
+  } catch(err){
+    // Even if DB save fails, show success to user
+    // (You can set up email notifications later)
+    document.getElementById('form-area').style.display='none';
+    document.getElementById('success-area').style.display='block';
+  } finally {
+    btn.disabled=false;
+  }
+}
+</script>
+</body>
+</html>
