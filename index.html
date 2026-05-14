@@ -469,6 +469,7 @@ footer{background:var(--navy-mid);border-top:1px solid rgba(74,127,165,.15);padd
       <div style="margin-bottom:2rem">
         <div class="ast">People</div>
         <button class="asl" onclick="aPage('customers',this)"><span>👥</span> Customers</button>
+        <button class="asl" onclick="aPage('inquiries',this)"><span>✉️</span> Inquiries</button>
       </div>
       <div style="padding:1rem 1.25rem">
         <button class="btn btn-gh btn-sm w-full" onclick="doLogout()" style="color:var(--error)">⬅ Exit Admin</button>
@@ -515,9 +516,15 @@ footer{background:var(--navy-mid);border-top:1px solid rgba(74,127,165,.15);padd
         </div>
       </div>
       <!-- CUSTOMERS -->
+      <!-- CUSTOMERS -->
       <div class="ap" id="page-customers">
         <h1>Customers</h1><p class="ps">All registered customers</p>
         <div class="tw"><table class="dt"><thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Joined</th><th>Orders</th></tr></thead><tbody id="cb2"></tbody></table></div>
+      </div>
+      <!-- INQUIRIES -->
+      <div class="ap" id="page-inquiries">
+        <h1>Inquiries</h1><p class="ps">Messages sent from the Contact Us page</p>
+        <div class="tw"><table class="dt"><thead><tr><th>Name</th><th>Email</th><th>Message</th><th>Date</th></tr></thead><tbody id="iqb"></tbody></table></div>
       </div>
     </main>
   </div>
@@ -963,7 +970,7 @@ function sBadge(s){
 
 // ADMIN DATA
 async function loadAdmData(){
-  loadDash();loadAdmOrders();loadAdmMenu();loadCusts();renderSlots();
+  loadDash();loadAdmOrders();loadAdmMenu();loadCusts();loadInquiries();renderSlots();
 }
 
 async function loadDash(){
@@ -1017,7 +1024,15 @@ async function loadAdmMenu(){
     </td>
   </tr>`).join(''):'<tr><td colspan="5" style="text-align:center;color:var(--text-muted);padding:2rem">No items yet. Add your first item!</td></tr>';
 }
-
+async function loadInquiries(){
+  const{data:iqs}=await db.from('inquiries').select('*').order('created_at',{ascending:false});
+  document.getElementById('iqb').innerHTML=(iqs||[]).length?iqs.map(i=>`<tr>
+    <td style="font-weight:500">${esc(i.name||'—')}</td>
+    <td>${esc(i.email||'—')}</td>
+    <td style="max-width:300px;white-space:pre-wrap;font-size:.85rem">${esc(i.message||'—')}</td>
+    <td>${new Date(i.created_at).toLocaleDateString()}</td>
+  </tr>`).join(''):'<tr><td colspan="4" style="text-align:center;color:var(--text-muted);padding:2rem">No inquiries yet</td></tr>';
+}
 async function loadCusts(){
   const{data:custs}=await db.from('profiles').select('*').eq('role','customer').order('created_at',{ascending:false});
   document.getElementById('cb2').innerHTML=(custs||[]).length?custs.map(c=>`<tr>
