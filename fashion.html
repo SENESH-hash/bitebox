@@ -258,7 +258,7 @@ footer{background:var(--navy-mid);border-top:1px solid rgba(232,146,58,.15);padd
 <section id="hero">
   <div class="hbg"></div><div class="hpat"></div>
   <div class="hc">
-    <div class="hbadge">🌼 Handcrafted · Unique · Sri Lankan Fashion</div>
+    <div class="hbadge"> Handcrafted · Unique · Sri Lankan Fashion</div>
     <h1 class="ht">Wear Your <span class="acc">Soul</span><br>with Marigold</h1>
     <p class="hs">Beautifully crafted clothing for ladies and gents — designed with passion, made for you.</p>
     <div class="ha">
@@ -279,12 +279,12 @@ footer{background:var(--navy-mid);border-top:1px solid rgba(232,146,58,.15);padd
     <div class="sw"><span class="si">🔍</span><input type="text" id="srch" placeholder="Search collection…" oninput="fItems()"></div>
     <div class="ctabs">
       <button class="ct act" onclick="setCat(this,'all')">All</button>
-      <button class="ct" onclick="setCat(this,'ladies_wear')">👗 Ladies Wear</button>
-      <button class="ct" onclick="setCat(this,'gents_wear')">👔 Gents Wear</button>
-      <button class="ct" onclick="setCat(this,'daily_wear')">👕 Daily Wear</button>
+      <button class="ct" onclick="setCat(this,'ladies_wear')">Ladies Wear</button>
+      <button class="ct" onclick="setCat(this,'gents_wear')">Gents Wear</button>
+      <button class="ct" onclick="setCat(this,'daily_wear')">Daily Wear</button>
     </div>
     <div class="mg" id="mg">
-      <div class="es"><div class="ico">👗</div><h3>Loading collection…</h3></div>
+      <div class="es"><div class="ico"></div><h3>Loading collection…</h3></div>
     </div>
   </div>
 </section>
@@ -296,8 +296,8 @@ footer{background:var(--navy-mid);border-top:1px solid rgba(232,146,58,.15);padd
     <a href="index.html" class="flnk">🍽️ BiteBox Food</a>
     <a href="about.html" class="flnk">About Us</a>
     <a href="contact.html" class="flnk">Contact Us</a>
-    <a href="https://www.instagram.com/seneshindeewara" target="_blank" class="flnk">📸 Instagram</a>
-    <a href="https://wa.me/94760774055" target="_blank" class="flnk">💬 WhatsApp</a>
+    <a href="https://www.instagram.com/seneshindeewara" target="_blank" class="flnk">Instagram</a>
+    <a href="https://wa.me/94760774055" target="_blank" class="flnk">WhatsApp</a>
   </div>
   <p style="color:var(--text-muted);font-size:.78rem">© 2025 Marigold Soul by BiteBox. All rights reserved.</p>
 </footer>
@@ -314,7 +314,7 @@ footer{background:var(--navy-mid);border-top:1px solid rgba(232,146,58,.15);padd
       <button class="btn btn-m w-full" onclick="doLogin()">Sign In</button>
     </div>
     <div id="ts" class="hidden">
-      <h2>Join Marigold Soul 🌼</h2>
+      <h2>Join Marigold Soul </h2>
       <div class="fg"><label>Full Name *</label><input type="text" id="sn" placeholder="Your full name"></div>
       <div class="fg"><label>Email *</label><input type="email" id="se" placeholder="your@email.com"></div>
       <div class="fg"><label>Phone</label><input type="tel" id="sph" placeholder="+94 7X XXX XXXX"></div>
@@ -366,14 +366,14 @@ footer{background:var(--navy-mid);border-top:1px solid rgba(232,146,58,.15);padd
       <div class="popt" id="pcard" onclick="selPay('card')"><div class="ic">💳</div><div class="lb">Card Payment</div><div class="sb">LK credit/debit only</div></div>
     </div>
     <div class="ct-row" style="margin-bottom:1.25rem"><span class="ctl">Order Total</span><span class="cta" id="cot">LKR 0</span></div>
-    <button class="btn btn-m w-full btn-lg" onclick="placeOrder()" id="pob">Place Order 🌼</button>
+    <button class="btn btn-m w-full btn-lg" onclick="placeOrder()" id="pob">Place Order </button>
   </div>
 </div>
 
 <!-- ORDER CONFIRM -->
 <div class="mo hidden" id="ocm">
   <div class="md" style="text-align:center">
-    <div style="font-size:3.5rem;margin-bottom:1rem">🌼</div>
+    <div style="font-size:3.5rem;margin-bottom:1rem"></div>
     <h2 style="margin-bottom:.75rem">Order Placed!</h2>
     <p style="color:var(--text-muted);margin-bottom:1.5rem">Thank you! We'll start preparing your order right away!</p>
     <div class="tl">
@@ -467,7 +467,7 @@ async function doSignup(){
   const{data,error}=await db.auth.signUp({email:e,password:p,options:{data:{full_name:n,phone:ph,address:a,role:'customer'}}});
   if(error){toast(error.message,'error');return}
   if(data.user){await db.from('profiles').upsert({id:data.user.id,email:e,full_name:n,phone:ph,address:a,role:'customer'})}
-  toast('Account created! 🌼','success');cM('am');
+  toast('Account created! ','success');cM('am');
 }
 async function doLogout(){
   await db.auth.signOut();user=null;updNav();cart=[];updCartUI();toast('Signed out','info');
@@ -502,13 +502,13 @@ function renderItems(){
 function itemCard(item){
   const imgs=item.images||[];
   const bMap={ladies_wear:'bl',gents_wear:'bg2',daily_wear:'bg3'};
-  const lMap={ladies_wear:'👗 Ladies',gents_wear:'👔 Gents',daily_wear:'👕 Daily'};
+  const lMap={ladies_wear:'Ladies',gents_wear:'Gents',daily_wear:'Daily'};
   let imgH='';
   if(imgs.length){
     imgH=imgs.map((u,i)=>`<img src="${u}" class="${i===0?'act':''}" alt="${esc(item.name)}" loading="lazy">`).join('');
     imgH+=`<div class="ids">${imgs.map((_,i)=>`<span class="id ${i===0?'act':''}" onclick="sImg(this,${i})"></span>`).join('')}</div>`;
     if(imgs.length>1)imgH+=`<button class="in prev" onclick="slImg(this,-1)">‹</button><button class="in next" onclick="slImg(this,1)">›</button>`;
-  }else{imgH='<div class="pni">👗</div>'}
+  }else{imgH='<div class="pni"></div>'}
   const sizes=(item.sizes||[]).map(s=>`<span class="psize">${s}</span>`).join('');
   return `<div class="pc">
     <div class="pi">${imgH}<span class="pbadge ${bMap[item.category]||'bl'}">${lMap[item.category]||item.category}</span></div>
