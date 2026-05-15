@@ -99,7 +99,7 @@ body{font-family:var(--font-b);background:var(--navy);color:var(--text-light);mi
 .ht{font-family:var(--font-d);font-size:clamp(2.8rem,6vw,5rem);font-weight:900;line-height:1.05;margin-bottom:1.25rem;color:var(--cream)}
 .ht .acc{color:var(--crimson-light)}.ht .brd{color:var(--gold)}
 .hs{font-size:1.1rem;color:var(--text-muted);line-height:1.7;margin-bottom:2.5rem;max-width:500px;margin-left:auto;margin-right:auto}
-.ha{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.ha{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;align-items:center}
 .hst{display:flex;gap:2rem;justify-content:center;margin-top:4rem;flex-wrap:wrap}
 .stn{font-family:var(--font-d);font-size:2rem;font-weight:700;color:var(--gold)}
 .stl{font-size:.82rem;color:var(--text-muted);margin-top:.2rem;letter-spacing:.04em}
@@ -424,7 +424,7 @@ footer{background:var(--navy-mid);border-top:1px solid rgba(74,127,165,.15);padd
       <p class="hs">Short eats, refreshing beverages, and decadent cakes — made fresh, delivered with love, right to your door.</p>
       <div class="ha">
         <button class="btn btn-p btn-lg" onclick="goTo('ms')">Browse Menu</button>
-        <button class="btn btn-o btn-lg" onclick="openAuth()">Join BiteBox</button>
+        <button class="btn btn-o btn-lg" id="join-btn" onclick="openAuth()">Join BiteBox</button>
       </div>
       <div class="hst">
         <div><div class="stn" id="si">—</div><div class="stl">Menu Items</div></div>
@@ -774,6 +774,8 @@ function updNav(){
   document.getElementById('npb').classList.toggle('hidden',!li||isAdm);
   document.getElementById('cbn').classList.toggle('hidden',!li||isAdm);
   document.getElementById('nab').textContent=isAdm?'⚙ Admin Panel':'Admin';
+  const jb=document.getElementById('join-btn');
+  if(jb)jb.classList.toggle('hidden',li);
 }
 
 // AUTH
