@@ -234,13 +234,13 @@ footer{background:var(--navy-mid);border-top:1px solid rgba(232,146,58,.15);padd
   <div class="ni">
     <a href="index.html" class="logo">Marigold Soul <small>by BiteBox</small></a>
     <div class="nav-links">
-      <a href="index.html" class="nl">🍽️ BiteBox</a>
+      <a href="index.html" class="nl">BiteBox</a>
       <a href="index.html#ms" class="nl">Food Menu</a>
       <a href="contact.html" class="nl">Contact</a>
     </div>
     <div class="nav-actions">
-      <button class="cart-btn hidden" id="cbn" onclick="openCart()">🛍️ Cart <span class="cbg" id="cc">0</span></button>
-      <button class="btn btn-gh btn-sm" id="npb" onclick="openProfile()" style="color:var(--text-muted)">👤 Profile</button>
+      <button class="cart-btn hidden" id="cbn" onclick="openCart()">Cart <span class="cbg" id="cc">0</span></button>
+      <button class="btn btn-gh btn-sm" id="npb" onclick="openProfile()" style="color:var(--text-muted)">Profile</button>
       <button class="btn btn-m btn-sm" id="nlb" onclick="openAuth()">Sign In</button>
       <button class="btn btn-gh btn-sm hidden" id="nlo" onclick="doLogout()">Sign Out</button>
     </div>
@@ -250,7 +250,7 @@ footer{background:var(--navy-mid);border-top:1px solid rgba(232,146,58,.15);padd
 
 <!-- MOBILE MENU -->
 <div id="mm">
-  <a href="index.html" class="nl">🍽️ BiteBox Food</a>
+  <a href="index.html" class="nl">BiteBox Food</a>
   <a href="contact.html" class="nl">Contact</a>
 </div>
 
@@ -262,8 +262,8 @@ footer{background:var(--navy-mid);border-top:1px solid rgba(232,146,58,.15);padd
     <h1 class="ht">Wear Your <span class="acc">Soul</span><br>with Marigold</h1>
     <p class="hs">Beautifully crafted clothing for ladies and gents — designed with passion, made for you.</p>
     <div class="ha">
-      <button class="btn btn-m btn-lg" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">Shop Now 🛍️</button>
-      <a href="index.html" class="btn btn-o btn-lg">🍽️ BiteBox Food</a>
+      <button class="btn btn-m btn-lg" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">Shop Now</button>
+      <a href="index.html" class="btn btn-o btn-lg">BiteBox Food</a>
     </div>
   </div>
 </section>
@@ -276,7 +276,7 @@ footer{background:var(--navy-mid);border-top:1px solid rgba(232,146,58,.15);padd
       <p class="ss">Explore our latest fashion designs</p>
       <div class="ml"></div>
     </div>
-    <div class="sw"><span class="si">🔍</span><input type="text" id="srch" placeholder="Search collection…" oninput="fItems()"></div>
+    <div class="sw"><span class="si"></span><input type="text" id="srch" placeholder="Search collection…" oninput="fItems()"></div>
     <div class="ctabs">
       <button class="ct act" onclick="setCat(this,'all')">All</button>
       <button class="ct" onclick="setCat(this,'ladies_wear')">Ladies Wear</button>
@@ -293,7 +293,7 @@ footer{background:var(--navy-mid);border-top:1px solid rgba(232,146,58,.15);padd
 <footer>
   <div class="fl">Marigold Soul <small>Fashion by BiteBox</small></div>
   <div class="fls">
-    <a href="index.html" class="flnk">🍽️ BiteBox Food</a>
+    <a href="index.html" class="flnk">BiteBox Food</a>
     <a href="about.html" class="flnk">About Us</a>
     <a href="contact.html" class="flnk">Contact Us</a>
     <a href="https://www.instagram.com/seneshindeewara" target="_blank" class="flnk">Instagram</a>
@@ -308,7 +308,7 @@ footer{background:var(--navy-mid);border-top:1px solid rgba(232,146,58,.15);padd
     <button class="mc" onclick="cM('am')">✕</button>
     <div class="at"><button class="atb act" onclick="swTab('login')">Sign In</button><button class="atb" onclick="swTab('signup')">Create Account</button></div>
     <div id="tl">
-      <h2>Welcome Back 👋</h2>
+      <h2>Welcome Back</h2>
       <div class="fg"><label>Email</label><input type="email" id="le" placeholder="your@email.com"></div>
       <div class="fg"><label>Password</label><input type="password" id="lp" placeholder="••••••••"></div>
       <button class="btn btn-m w-full" onclick="doLogin()">Sign In</button>
@@ -329,7 +329,7 @@ footer{background:var(--navy-mid);border-top:1px solid rgba(232,146,58,.15);padd
 <div class="mo hidden" id="cartm" onclick="if(event.target.id==='cartm')cM('cartm')">
   <div class="md md-w">
     <button class="mc" onclick="cM('cartm')">✕</button>
-    <h2>Your Cart 🛍️</h2>
+    <h2>Your Cart</h2>
     <div class="cil" id="cil"></div>
     <div class="ct-row"><span class="ctl">Total</span><span class="cta" id="cta">LKR 0</span></div>
     <button class="btn btn-m w-full btn-lg" onclick="openCO()" id="cob">Proceed to Checkout →</button>
@@ -362,8 +362,8 @@ footer{background:var(--navy-mid);border-top:1px solid rgba(232,146,58,.15);padd
     <div class="fg"><label>Notes (optional)</label><input type="text" id="conotes" placeholder="Any special requests?"></div>
     <p style="font-size:.9rem;font-weight:600;color:var(--text-muted);margin-bottom:.75rem">Payment Method</p>
     <div class="po">
-      <div class="popt sel" id="pcod" onclick="selPay('cod')"><div class="ic">💵</div><div class="lb">Cash on Delivery</div><div class="sb">Pay when delivered</div></div>
-      <div class="popt" id="pcard" onclick="selPay('card')"><div class="ic">💳</div><div class="lb">Card Payment</div><div class="sb">LK credit/debit only</div></div>
+      <div class="popt sel" id="pcod" onclick="selPay('cod')"><div class="ic"></div><div class="lb">Cash on Delivery</div><div class="sb">Pay when delivered</div></div>
+      <div class="popt" id="pcard" onclick="selPay('card')"><div class="ic"></div><div class="lb">Card Payment</div><div class="sb">LK credit/debit only</div></div>
     </div>
     <div class="ct-row" style="margin-bottom:1.25rem"><span class="ctl">Order Total</span><span class="cta" id="cot">LKR 0</span></div>
     <button class="btn btn-m w-full btn-lg" onclick="placeOrder()" id="pob">Place Order </button>
@@ -377,13 +377,13 @@ footer{background:var(--navy-mid);border-top:1px solid rgba(232,146,58,.15);padd
     <h2 style="margin-bottom:.75rem">Order Placed!</h2>
     <p style="color:var(--text-muted);margin-bottom:1.5rem">Thank you! We'll start preparing your order right away!</p>
     <div class="tl">
-      <div class="tls"><div class="tld done">✓</div><div class="tll">Placed</div></div>
+      <div class="tls"><div class="tld done"></div><div class="tll">Placed</div></div>
       <div class="tlln"></div>
-      <div class="tls"><div class="tld cur">✂️</div><div class="tll">Preparing</div></div>
+      <div class="tls"><div class="tld cur"></div><div class="tll">Preparing</div></div>
       <div class="tlln"></div>
-      <div class="tls"><div class="tld">📦</div><div class="tll">Ready</div></div>
+      <div class="tls"><div class="tld"></div><div class="tll">Ready</div></div>
       <div class="tlln"></div>
-      <div class="tls"><div class="tld">🏠</div><div class="tll">Delivered</div></div>
+      <div class="tls"><div class="tld"></div><div class="tll">Delivered</div></div>
     </div>
     <button class="btn btn-m" style="margin-top:1.5rem" onclick="cM('ocm')">Done</button>
   </div>
@@ -392,7 +392,7 @@ footer{background:var(--navy-mid);border-top:1px solid rgba(232,146,58,.15);padd
 <!-- PROFILE MODAL -->
 <div class="mo hidden" id="pm" onclick="if(event.target.id==='pm')cM('pm')">
   <div class="md md-w">
-    <button class="mc" onclick="cM('pm')">✕</button>
+    <button class="mc" onclick="cM('pm')"></button>
     <h2>My Profile</h2>
     <div style="background:var(--navy);border:1px solid rgba(74,127,165,.15);border-radius:var(--r);padding:1.5rem;margin-bottom:1.5rem">
       <div style="display:flex;align-items:center;gap:1rem">
@@ -454,7 +454,7 @@ async function doLogin(){
   if(!e||!p){toast('Fill in all fields','error');return}
   const{error}=await db.auth.signInWithPassword({email:e,password:p});
   if(error){toast(error.message,'error');return}
-  toast('Welcome back! 👋','success');cM('am');
+  toast('Welcome back!','success');cM('am');
 }
 async function doSignup(){
   const n=document.getElementById('sn').value.trim(),
@@ -493,7 +493,7 @@ function renderItems(){
   if(activeCat!=='all')it=it.filter(i=>i.category===activeCat);
   if(srch)it=it.filter(i=>i.name.toLowerCase().includes(srch)||(i.description||'').toLowerCase().includes(srch));
   if(!it.length){
-    grid.innerHTML='<div class="es"><div class="ico">👗</div><h3>Nothing found</h3><p>Try a different search or category</p></div>';
+    grid.innerHTML='<div class="es"><div class="ico"></div><h3>Nothing found</h3><p>Try a different search or category</p></div>';
     return;
   }
   grid.innerHTML=it.map(i=>itemCard(i)).join('');
@@ -577,7 +577,7 @@ function addToCart(item,size){
   if(ex)ex.qty++;
   else cart.push({...item,size,key,qty:1});
   updCartUI();
-  toast(`${item.name} (${size}) added! 🛍️`,'success',2000);
+  toast(`${item.name} (${size}) added!`,'success',2000);
 }
 
 function updCartUI(){
@@ -586,7 +586,7 @@ function updCartUI(){
   document.getElementById('cc').textContent=cnt;
   const list=document.getElementById('cil');
   if(!cart.length){
-    list.innerHTML='<div class="es" style="padding:2rem 0"><div class="ico">🛍️</div><h3>Cart is empty</h3><p>Browse our collection!</p></div>';
+    list.innerHTML='<div class="es" style="padding:2rem 0"><div class="ico"></div><h3>Cart is empty</h3><p>Browse our collection!</p></div>';
   }else{
     list.innerHTML=cart.map(i=>`<div class="ci">
       <img class="cii" src="${(i.images||[])[0]||''}" onerror="this.style.display='none'" alt="${esc(i.name)}">
@@ -659,7 +659,7 @@ async function openProfile(){
   const{data:ords}=await db.from('fashion_orders').select('*').eq('user_id',user.id).order('created_at',{ascending:false});
   const c=document.getElementById('por');
   if(!ords||!ords.length){
-    c.innerHTML='<div class="es" style="padding:2rem 0"><div class="ico">👗</div><h3>No orders yet</h3><p>Start shopping!</p></div>';
+    c.innerHTML='<div class="es" style="padding:2rem 0"><div class="ico"></div><h3>No orders yet</h3><p>Start shopping!</p></div>';
   }else{
     c.innerHTML=ords.map(o=>{
       const it=(o.items||[]).map(i=>`${i.name} (${i.size}) ×${i.qty}`).join(', ');
@@ -671,7 +671,7 @@ async function openProfile(){
         <div style="font-size:.85rem;color:var(--text-muted);margin-bottom:.5rem">${esc(it)}</div>
         <div style="display:flex;justify-content:space-between;align-items:center">
           <span style="font-weight:600;color:var(--marigold)">LKR ${Number(o.total_amount).toLocaleString()}</span>
-          <span class="osb sp-">⏳ ${o.status}</span>
+          <span class="osb sp-">${o.status}</span>
         </div>
       </div>`;
     }).join('');
