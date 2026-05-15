@@ -474,6 +474,12 @@ footer{background:var(--navy-mid);border-top:1px solid rgba(74,127,165,.15);padd
         <button class="asl" onclick="aPage('customers',this)"><span>👥</span> Customers</button>
         <button class="asl" onclick="aPage('inquiries',this)"><span>✉️</span> Inquiries</button>
       </div>
+      <div style="margin-bottom:2rem">
+        <div class="ast">Marigold Soul</div>
+        <button class="asl" onclick="aPage('fashion-mgmt',this)"><span>👗</span> Fashion Items</button>
+        <button class="asl" onclick="aPage('add-fashion',this)"><span>➕</span> Add Fashion Item</button>
+        <button class="asl" onclick="aPage('fashion-orders',this)"><span>📦</span> Fashion Orders</button>
+      </div>
       <div style="padding:1rem 1.25rem">
         <button class="btn btn-gh btn-sm w-full" onclick="doLogout()" style="color:var(--error)">⬅ Exit Admin</button>
       </div>
@@ -529,6 +535,52 @@ footer{background:var(--navy-mid);border-top:1px solid rgba(74,127,165,.15);padd
         <h1>Inquiries</h1><p class="ps">Messages sent from the Contact Us page</p>
         <div class="tw"><table class="dt"><thead><tr><th>Name</th><th>Email</th><th>Message</th><th>Date</th></tr></thead><tbody id="iqb"></tbody></table></div>
       </div>
+      <!-- FASHION ITEMS -->
+<div class="ap" id="page-fashion-mgmt">
+  <h1>Fashion Items</h1><p class="ps">Manage all Marigold Soul clothing items</p>
+  <div style="margin-bottom:1rem"><button class="btn btn-p" onclick="aPage('add-fashion',null);resetFashionForm()">+ Add New Item</button></div>
+  <div class="tw"><table class="dt"><thead><tr><th>Item</th><th>Category</th><th>Price</th><th>Images</th><th>Actions</th></tr></thead><tbody id="fab"></tbody></table></div>
+</div>
+
+<!-- ADD FASHION ITEM -->
+<div class="ap" id="page-add-fashion">
+  <h1 id="fft">Add Fashion Item</h1><p class="ps">Fill in the details for the clothing item</p>
+  <div style="background:var(--navy-mid);border:1px solid rgba(74,127,165,.15);border-radius:var(--r);padding:2rem;max-width:640px">
+    <input type="hidden" id="feid">
+    <div class="fg"><label>Item Name *</label><input type="text" id="fname" placeholder="e.g. Floral Summer Dress"></div>
+    <div class="fg"><label>Category *</label>
+      <select id="fcat">
+        <option value="">Select category…</option>
+        <option value="ladies_wear">👗 Ladies Wear</option>
+        <option value="gents_wear">👔 Gents Wear</option>
+        <option value="daily_wear">👕 Daily Wear</option>
+      </select>
+    </div>
+    <div class="fg"><label>Price (LKR) *</label><input type="number" id="fpr" placeholder="e.g. 2500"></div>
+    <div class="fg"><label>Description</label><textarea id="fdesc" rows="3" placeholder="Describe the clothing item…" style="resize:vertical"></textarea></div>
+    <div class="fg"><label>Available Sizes</label>
+      <div style="display:flex;gap:.75rem;flex-wrap:wrap;margin-top:.5rem">
+        <label style="display:flex;align-items:center;gap:.4rem;color:var(--text-light);font-size:.9rem"><input type="checkbox" value="S" class="fsize"> S</label>
+        <label style="display:flex;align-items:center;gap:.4rem;color:var(--text-light);font-size:.9rem"><input type="checkbox" value="M" class="fsize"> M</label>
+        <label style="display:flex;align-items:center;gap:.4rem;color:var(--text-light);font-size:.9rem"><input type="checkbox" value="L" class="fsize"> L</label>
+        <label style="display:flex;align-items:center;gap:.4rem;color:var(--text-light);font-size:.9rem"><input type="checkbox" value="XL" class="fsize"> XL</label>
+        <label style="display:flex;align-items:center;gap:.4rem;color:var(--text-light);font-size:.9rem"><input type="checkbox" value="XXL" class="fsize"> XXL</label>
+        <label style="display:flex;align-items:center;gap:.4rem;color:var(--text-light);font-size:.9rem"><input type="checkbox" value="Custom" class="fsize"> Custom Size</label>
+      </div>
+    </div>
+    <div class="fg"><label>Photos (up to 5) — click a slot to upload</label><div class="iug" id="fiug"></div></div>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap">
+      <button class="btn btn-p" id="sfib" onclick="saveFI()">💾 Save Item</button>
+      <button class="btn btn-gh" onclick="aPage('fashion-mgmt',null)">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- FASHION ORDERS -->
+<div class="ap" id="page-fashion-orders">
+  <h1>Fashion Orders</h1><p class="ps">Manage clothing orders</p>
+  <div class="tw"><table class="dt"><thead><tr><th>Order ID</th><th>Customer</th><th>Item</th><th>Size</th><th>Total</th><th>Status</th><th>Update</th></tr></thead><tbody id="fob"></tbody></table></div>
+</div>
     </main>
   </div>
   <button class="amt" onclick="togAS()">☰</button>
