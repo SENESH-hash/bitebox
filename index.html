@@ -771,7 +771,6 @@ function updNav(){
   document.getElementById('nlo').classList.toggle('hidden',!li);
   document.getElementById('npb').classList.toggle('hidden',!li||isAdm);
   document.getElementById('cbn').classList.toggle('hidden',!li||isAdm);
-  document.getElementById('nab').textContent=isAdm?'⚙ Admin Panel':'Admin';
   const jb=document.getElementById('join-btn');
   if(jb)jb.classList.toggle('hidden',li);
 }
