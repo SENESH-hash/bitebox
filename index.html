@@ -1339,6 +1339,48 @@ function setupRT(){
 
 // UTIL
 // SCROLL REVEAL
+// FLOATING PARTICLES
+function initParticles(){
+  const canvas=document.createElement('canvas');
+  canvas.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:0.4';
+  document.body.prepend(canvas);
+  const ctx=canvas.getContext('2d');
+  let W=canvas.width=window.innerWidth;
+  let H=canvas.height=window.innerHeight;
+
+  const particles=Array.from({length:60},()=>({
+    x:Math.random()*W,
+    y:Math.random()*H,
+    r:Math.random()*2+0.5,
+    dx:(Math.random()-0.5)*0.3,
+    dy:-Math.random()*0.4-0.1,
+    o:Math.random()*0.5+0.1,
+    color:Math.random()>0.5?'212,168,67':'74,127,165'
+  }));
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    particles.forEach(p=>{
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(${p.color},${p.o})`;
+      ctx.fill();
+      p.x+=p.dx;
+      p.y+=p.dy;
+      if(p.y<-5)p.y=H+5;
+      if(p.x<-5)p.x=W+5;
+      if(p.x>W+5)p.x=-5;
+    });
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize',()=>{
+    W=canvas.width=window.innerWidth;
+    H=canvas.height=window.innerHeight;
+  });
+
+  draw();
+}
 function initScrollReveal(){
   const style=document.createElement('style');
   style.textContent=`
@@ -1380,7 +1422,7 @@ async function boot(){
   });
   const el=document.getElementById('ld');
   el.style.opacity='0';el.style.transition='opacity .4s';
-  setTimeout(()=>{el.remove();initScrollReveal();},400);
+  setTimeout(()=>{el.remove();initScrollReveal();initParticles();},400);
 }
 boot();
 </script>
