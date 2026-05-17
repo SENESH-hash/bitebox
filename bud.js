@@ -1,4 +1,4 @@
-// ===== BUD CHATBOT =====
+// ===== BITEY BUD CHATBOT =====
 (function(){
 
 // ===== KNOWLEDGE BASE =====
@@ -65,9 +65,9 @@ function getResponse(input){
   // Greetings
   if(KB.greetings.some(g=>msg.includes(g))){
     const greets = [
-      "Hey there! 👋 I'm Bud, your BiteBox assistant! How can I help you today?",
-      "Hello! 😊 I'm Bud! Ask me anything about BiteBox or Marigold Soul!",
-      "Hi! 🌟 Welcome to BiteBox! I'm Bud — here to help you out!"
+      "Hey there! 👋 I'm Bitey Bud, your BiteBox assistant! How can I help you today?",
+      "Hello! 😊 I'm Bitey Bud! Ask me anything about BiteBox or Marigold Soul!",
+      "Hi! 🌟 Welcome to BiteBox! I'm Bitey Bud — here to help you out!"
     ];
     return greets[Math.floor(Math.random()*greets.length)];
   }
@@ -99,7 +99,7 @@ function getResponse(input){
   return defaults[Math.floor(Math.random()*defaults.length)];
 }
 
-// ===== BUD FACE SVGs =====
+// ===== BITEY BUD FACE SVGs =====
 
 // Large face for the floating button (fits inside 60px circle)
 const budBtnFace = `<svg width="42" height="42" viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg" style="display:block">
@@ -152,7 +152,7 @@ const budAvatarFace = `<svg width="28" height="28" viewBox="0 0 28 28" xmlns="ht
 </svg>`;
 
 // ===== EYE ANIMATION =====
-// Makes Bud's pupils wander around curiously like a baby
+// Makes Bitey Bud's pupils wander around curiously like a baby
 function animateBudEyes(){
   // Each "look" is an (x, y) offset from pupil center, max ~1.4px
   const looks = [
@@ -392,7 +392,7 @@ function buildBud(){
   const btn = document.createElement('button');
   btn.id = 'bud-btn';
   btn.innerHTML = budBtnFace;
-  btn.setAttribute('aria-label','Open Bud chatbot');
+  btn.setAttribute('aria-label','Open Bitey Bud chatbot');
   document.body.appendChild(btn);
 
   // Chat window — avatar now uses SVG face
@@ -402,7 +402,7 @@ function buildBud(){
     <div id="bud-header">
       <div id="bud-avatar">${budAvatarFace}</div>
       <div id="bud-header-info">
-        <div id="bud-name">Bud</div>
+        <div id="bud-name">Bitey Bud</div>
         <div id="bud-status">● Online — BiteBox Assistant</div>
       </div>
       <button id="bud-close">✕</button>
@@ -438,7 +438,7 @@ function buildBud(){
 
   // Welcome message
   setTimeout(()=>{
-    addMsg("Hey there! 😊 I'm **Bud**, your BiteBox assistant!\n\nAsk me about our menu, fashion, how to order, payment or anything else!", 'bot');
+    addMsg("Hey there! 😊 I'm **Bitey Bud**, your BiteBox assistant!\n\nAsk me about our menu, fashion, how to order, payment or anything else!", 'bot');
   }, 300);
 
   // Start the eye wandering animation
