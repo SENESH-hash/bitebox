@@ -99,6 +99,101 @@ function getResponse(input){
   return defaults[Math.floor(Math.random()*defaults.length)];
 }
 
+// ===== BUD FACE SVGs =====
+
+// Large face for the floating button (fits inside 60px circle)
+const budBtnFace = `<svg width="42" height="42" viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg" style="display:block">
+  <!-- Outer soft glow ring -->
+  <circle cx="21" cy="21" r="19" fill="rgba(255,255,255,0.18)"/>
+  <!-- Face -->
+  <circle cx="21" cy="21" r="17" fill="white" opacity="0.95"/>
+  <!-- Left eye white -->
+  <circle cx="14" cy="18" r="4.2" fill="#f0f4ff" stroke="#c8d4e8" stroke-width="0.6"/>
+  <!-- Right eye white -->
+  <circle cx="28" cy="18" r="4.2" fill="#f0f4ff" stroke="#c8d4e8" stroke-width="0.6"/>
+  <!-- Pupils move as a group -->
+  <g class="bud-pupils">
+    <!-- Left pupil -->
+    <circle cx="14" cy="18" r="2.6" fill="#1a1a2e"/>
+    <circle cx="14.9" cy="17.1" r="0.85" fill="white" opacity="0.7"/>
+    <!-- Right pupil -->
+    <circle cx="28" cy="18" r="2.6" fill="#1a1a2e"/>
+    <circle cx="28.9" cy="17.1" r="0.85" fill="white" opacity="0.7"/>
+  </g>
+  <!-- Happy smile -->
+  <path d="M14.5 26 Q21 31.5 27.5 26" stroke="#1a1a2e" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+  <!-- Rosy cheeks -->
+  <circle cx="10" cy="26" r="3.5" fill="#ffb3b3" opacity="0.35"/>
+  <circle cx="32" cy="26" r="3.5" fill="#ffb3b3" opacity="0.35"/>
+</svg>`;
+
+// Smaller face for the chat header avatar (fits inside 36px circle)
+const budAvatarFace = `<svg width="28" height="28" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg" style="display:block">
+  <!-- Face -->
+  <circle cx="14" cy="14" r="13" fill="white" opacity="0.92"/>
+  <!-- Left eye white -->
+  <circle cx="9" cy="12" r="3.2" fill="#f0f4ff" stroke="#c8d4e8" stroke-width="0.5"/>
+  <!-- Right eye white -->
+  <circle cx="19" cy="12" r="3.2" fill="#f0f4ff" stroke="#c8d4e8" stroke-width="0.5"/>
+  <!-- Pupils move as a group -->
+  <g class="bud-pupils">
+    <!-- Left pupil -->
+    <circle cx="9" cy="12" r="2" fill="#1a1a2e"/>
+    <circle cx="9.7" cy="11.3" r="0.65" fill="white" opacity="0.7"/>
+    <!-- Right pupil -->
+    <circle cx="19" cy="12" r="2" fill="#1a1a2e"/>
+    <circle cx="19.7" cy="11.3" r="0.65" fill="white" opacity="0.7"/>
+  </g>
+  <!-- Happy smile -->
+  <path d="M9 18.5 Q14 23 19 18.5" stroke="#1a1a2e" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+  <!-- Rosy cheeks -->
+  <circle cx="6" cy="18" r="2.5" fill="#ffb3b3" opacity="0.35"/>
+  <circle cx="22" cy="18" r="2.5" fill="#ffb3b3" opacity="0.35"/>
+</svg>`;
+
+// ===== EYE ANIMATION =====
+// Makes Bud's pupils wander around curiously like a baby
+function animateBudEyes(){
+  // Each "look" is an (x, y) offset from pupil center, max ~1.4px
+  const looks = [
+    [0,    0   ],  // center
+    [-1.2, -0.8],  // up-left
+    [ 1.2, -0.8],  // up-right
+    [-1.3,  0.5],  // left
+    [ 1.3,  0.5],  // right
+    [ 0,   -1.3],  // up
+    [ 0,    1.2],  // down
+    [-0.8,  1.1],  // down-left
+    [ 0.8,  1.1],  // down-right
+    [-1.0, -0.3],  // slight left
+    [ 1.0, -0.3],  // slight right
+  ];
+
+  let lastIdx = 0;
+
+  function glance(){
+    // Pick a new direction (avoid repeating same look twice)
+    let idx;
+    do { idx = Math.floor(Math.random() * looks.length); } while(idx === lastIdx);
+    lastIdx = idx;
+
+    const [ox, oy] = looks[idx];
+
+    document.querySelectorAll('.bud-pupils').forEach(group => {
+      group.setAttribute('transform', `translate(${ox.toFixed(2)},${oy.toFixed(2)})`);
+    });
+
+    // Random next glance: quick peek (400ms) or longer gaze (up to 2.2s)
+    const delay = Math.random() < 0.25
+      ? 350 + Math.random() * 250     // quick side-glance
+      : 900 + Math.random() * 1300;   // lingering gaze
+    setTimeout(glance, delay);
+  }
+
+  // First glance after a short pause
+  setTimeout(glance, 700);
+}
+
 // ===== UI =====
 function buildBud(){
   const style = document.createElement('style');
@@ -276,6 +371,11 @@ function buildBud(){
     }
     #bud-send:hover{transform:scale(1.1)}
 
+    /* Smooth eye transition */
+    .bud-pupils{
+      transition: transform 0.18s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+
     @media(max-width:480px){
       #bud-window{width:calc(100vw - 3rem)}
     }
@@ -288,19 +388,19 @@ function buildBud(){
   bubble.textContent = 'Hi! Ask me anything 👋';
   document.body.appendChild(bubble);
 
-  // Chat button
+  // Chat button — now with cute SVG face
   const btn = document.createElement('button');
   btn.id = 'bud-btn';
-  btn.innerHTML = '🟡';
+  btn.innerHTML = budBtnFace;
   btn.setAttribute('aria-label','Open Bud chatbot');
   document.body.appendChild(btn);
 
-  // Chat window
+  // Chat window — avatar now uses SVG face
   const win = document.createElement('div');
   win.id = 'bud-window';
   win.innerHTML = `
     <div id="bud-header">
-      <div id="bud-avatar">😊</div>
+      <div id="bud-avatar">${budAvatarFace}</div>
       <div id="bud-header-info">
         <div id="bud-name">Bud</div>
         <div id="bud-status">● Online — BiteBox Assistant</div>
@@ -340,6 +440,9 @@ function buildBud(){
   setTimeout(()=>{
     addMsg("Hey there! 😊 I'm **Bud**, your BiteBox assistant!\n\nAsk me about our menu, fashion, how to order, payment or anything else!", 'bot');
   }, 300);
+
+  // Start the eye wandering animation
+  animateBudEyes();
 }
 
 let budOpen = false;
